@@ -14,11 +14,12 @@ use App\Http\Controllers;
 */
 
 # PUBLIC
-//Route::middleware([])->group(function () {
-//
-//
-//
-//});
+Route::middleware([])->group(function () {
+
+    // todo - remove me.
+    Route::post('/test', Controllers\NodeEvent\CreateController::class);
+
+});
 
 
 # SDK

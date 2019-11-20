@@ -16,14 +16,11 @@ use App\Http\Controllers;
 # PUBLIC
 Route::middleware([])->group(function () {
 
-    // todo - remove me.
-    Route::post('/test', Controllers\NodeEvent\CreateController::class);
-
 });
 
 
 # SDK
-Route::middleware(['auth:sdk'])->group(function () {
+Route::middleware(['sdk'])->group(function () {
 
     # NODE HARDWARE
     Route::patch('/sdk/nodes/{node}/hardware', Controllers\NodeHardware\UpdateController::class);

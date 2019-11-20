@@ -22,6 +22,9 @@ Route::middleware([])->group(function () {
 # SDK
 Route::middleware(['sdk'])->group(function () {
 
+    # AUTH
+    Route::post('/sdk/auth', Controllers\Sdk\AuthenticateController::class);
+
     # NODE HARDWARE
     Route::patch('/sdk/nodes/{node}/hardware', Controllers\NodeHardware\UpdateController::class);
 

@@ -26,12 +26,29 @@ class UpdateController extends Controller
         $this->authorize('owns-node', $node);
 
         $this->validate($request, [
+            'hostname' => ['sometimes', 'nullable', 'string'],
+            'hostid' => ['sometimes', 'nullable', 'string'],
+            'uptime' => ['sometimes', 'nullable', 'numeric'],
+            'os' => ['sometimes', 'nullable', 'string'],
+            'platform' => ['sometimes', 'nullable', 'string'],
+            'platformFamily' => ['sometimes', 'nullable', 'string'],
+            'platformVersion' => ['sometimes', 'nullable', 'string'],
+            'kernelVersion' => ['sometimes', 'nullable', 'string'],
+            'kernelArch' => ['sometimes', 'nullable', 'string'],
         ]);
 
         /** @var NodeHardware $hardware */
         $hardware = $node->hardware;
 
         $hardware->update([
+            'hostname' => $request->input('hostname'),
+            'hostid' => $request->input('hostid'),
+            'os' => $request->input('os'),
+            'os_platform' => $request->input('platform'),
+            'os_platform_family' => $request->input('platformFamily'),
+            'os_platform_version' => $request->input('platformVersion'),
+            'kernel_version' => $request->input('kernelVersion'),
+            'kernel_arch' => $request->input('kernelArch'),
         ]);
 
         return new NodeHardwareResource($hardware);
